@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import tensorflow as tf
 from read_utils import TextConverter
 from model import CharRNN
@@ -32,7 +33,9 @@ def main(_):
 
     start = converter.text_to_arr(FLAGS.start_string)
     arr = model.sample(FLAGS.max_length, start, converter.vocab_size)
-    print(converter.arr_to_text(arr))
+    words = converter.arr_to_text(arr)
+    print(words.encode('utf-8'))
+
 
 
 if __name__ == '__main__':
